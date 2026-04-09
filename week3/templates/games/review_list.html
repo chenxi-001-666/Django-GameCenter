@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All User Reviews | GameCenter</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .review-card { border-left: 5px solid #764ba2; transition: 0.3s; }
+        .review-card:hover { background-color: #f8f9fa; }
+        .rating-badge { background-color: #ffc107; color: #000; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'game_list' %}">🎮 GameCenter</a>
+        <div class="navbar-nav ms-auto">
+            <a href="{% url 'game_list' %}" class="nav-link">Games</a>
+            <a href="{% url 'all_reviews' %}" class="nav-link active">All Reviews</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <h2 class="mb-4 fw-bold text-center">Community Reviews</h2>
+    <hr class="mb-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            {% for review in reviews %}
+            <div class="card mb-4 shadow-sm review-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h5 class="card-title mb-0 fw-bold">{{ review.game.title }}</h5>
+                            <small class="text-muted">Reviewed by <strong>{{ review.user.username }}</strong></small>
+                        </div>
+                        <span class="badge rating-badge p-2">⭐ {{ review.rating }}/10</span>
+                    </div>
+                    <p class="card-text mt-3">"{{ review.comment }}"</p>
+                    <div class="text-end">
+                        <small class="text-muted fst-italic">{{ review.created_at|date:"Y-m-d H:i" }}</small>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-top-0 text-end">
+                    <a href="{% url 'game_specific_reviews' review.game.slug %}" class="btn btn-sm btn-link text-decoration-none">View this game &rarr;</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center py-5">
+                <p class="text-muted">No reviews yet. Be the first to write one!</p>
+                <a href="{% url 'game_list' %}" class="btn btn-primary">Go to Games</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<footer class="py-4 text-center text-muted">
+    <small>&copy; 2026 Game Database Explorer</small>
+</footer>
+
+</body>
+</html>
