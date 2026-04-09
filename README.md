@@ -60,10 +60,10 @@ python manage.py runserver
 Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) start using your favorite browser to experience the game database and review platform!
 
 Relevant Links:
-    [GitHub Repository](https://github.com/yourusername/Django-GameCenter)
-    [Index page of Game Center](http://127.0.0.1:8000/games)
-    [Login page of Admin System](http://127.0.0.1:8000/admin)
-    [Review Center Page](http://127.0.0.1:8000/reviews)
+    * **Github Repo**: (https://github.com/yourusername/Django-GameCenter)
+    * **Index Page of Game Center**: (http://127.0.0.1:8000/games)
+    * **Index of Admin System**: (http://127.0.0.1:8000/admin)
+    * **Index of Reviews Center**: (http://127.0.0.1:8000/reviews)
 
 ## 📚 Tech Stack | 技术栈
 * **Backend**: Django 5.2
